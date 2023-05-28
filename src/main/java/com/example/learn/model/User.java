@@ -3,8 +3,6 @@ package com.example.learn.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-
-import java.util.List;
 @Entity
 @Table(name = "user")
 @Data
@@ -14,21 +12,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String fullName;
-    private String address;
-    private String passWord;
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false, unique = true)
     private String email;
-    private String image;
-    private String bio;
-    private String skills;
-    private String education;
-    private String work;
-    private List<Long> posts;
-    private List<Long> comments;
-    private List<Long> followTags;
-    private List<Long> followers;
-    private List<Long> followings;
-    private List<Long> bookmarks;
-    private String refreshToken;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
+    private int role;
 
 }
