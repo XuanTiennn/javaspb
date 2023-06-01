@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 @Service
 
@@ -21,8 +22,26 @@ public class CloudinaryService {
                 "api_secret", apiSecret));
     }
 
-    public String uploadImage(MultipartFile file) throws IOException {
-        Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
-        return (String) uploadResult.get("url");
+    public Map<String, String> uploadImage(MultipartFile file) throws IOException {
+        // Tải ảnh lên Cloudinary
+        Map<String, String> uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+
+        // Lấy publicId và URL từ kết quả tải lên
+        String publicId = uploadResult.get("public_id");
+        String imageUrl = uploadResult.get("url");
+
+        // Tạo map kết quả với publicId và URL
+        Map<String, String> result = new HashMap<>();
+        result.put("publicId", publicId);
+        result.put("imageUrl", imageUrl);
+
+        return result;
+    }
+    public void deleteImage(String publicId) throws IOException{
+        Map<String, String> options = new HashMap<>();
+        // Các tùy chọn xóa ảnh (nếu cần)
+        // options.put("key", "value");
+
+        cloudinary.uploader().destroy(publicId, options);
     }
 }
