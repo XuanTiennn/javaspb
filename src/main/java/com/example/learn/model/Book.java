@@ -37,4 +37,6 @@ public class Book {
     @Column(nullable = false)
     private int image;
 
+    @Column(nullable = false)
+    private String description;
 }
