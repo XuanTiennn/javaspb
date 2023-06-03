@@ -1,12 +1,8 @@
 package com.example.learn.model;
-
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "books")
@@ -22,21 +18,23 @@ public class Book {
     @Column(nullable = false)
     private String author;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String category;
 
     @Column(nullable = false)
     private Date releaseDate;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int pageCount;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int soldCount;
 
-    @Column(nullable = false)
-    private int image;
+    @Column(nullable = true)
+    private String imageUrl;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
+    private String publicId;
+    @Column(nullable = true)
     private String description;
 }
