@@ -19,16 +19,28 @@ public class Order {
 
     @Column(nullable = false)
     private int quantity;
+    @Column(nullable = false)
+    private String state;
 
     // Constructors, getters, and setters
     public Order() {
     }
 
-    public Order(Long id, User user, Book book, int quantity) {
+
+    public Order(Long id, User user, Book book, int quantity, String state) {
         this.id = id;
         this.user = user;
         this.book = book;
         this.quantity = quantity;
+        this.state = state;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Long getId() {
