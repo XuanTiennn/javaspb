@@ -32,4 +32,10 @@ public class OrderController {
         return ResponseEntity.ok(savedOrder);
 
     }
+
+    @PutMapping("/update/{orderId}")
+    public ResponseEntity<Order> updateOrder(@PathVariable Long orderId, @RequestBody Order order) {
+        Order updateOrder = orderService.updateOrder(orderId, order);
+        return ResponseEntity.ok(updateOrder);
+    }
 }

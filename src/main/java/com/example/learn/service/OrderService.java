@@ -22,4 +22,13 @@ public class OrderService {
     public Order saveOrder(Order order) {
         return orderRepository.save(order);
     }
+
+    public Order updateOrder(Long orderId, Order order) {
+        Order _order = orderRepository.findById(orderId).orElse(null);
+        if (_order != null) {
+            _order.setState(order.getState());
+            return orderRepository.save(_order);
+        }
+        return _order;
+    }
 }
