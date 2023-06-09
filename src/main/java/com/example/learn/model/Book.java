@@ -37,4 +37,5 @@ public class Book {
     private String publicId;
     @Column(nullable = true)
     private String description;
+    private Integer status;
 }

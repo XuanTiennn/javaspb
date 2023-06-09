@@ -38,10 +38,10 @@ public class BookController {
         return ResponseEntity.ok(savedBook);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteBook(@PathVariable Long id) {
-        bookService.deleteBook(id);
-        return ResponseEntity.ok().build();
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateBook(@PathVariable Long id, @RequestBody Book book) {
+        Book saveBook = bookService.updateBook(id, book);
+        return ResponseEntity.ok(saveBook);
     }
 
     // Other book-related endpoints
